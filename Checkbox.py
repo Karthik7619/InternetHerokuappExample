@@ -6,12 +6,15 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Code to select and unselect checkbox
+
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.get("https://the-internet.herokuapp.com/")
 driver.maximize_window()
 driver.find_element(By.XPATH,"//a[normalize-space()='Checkboxes']").click()
 time.sleep(5)
 
+title = driver.find_element(By.XPATH,"//h3[normalize-space()='Checkboxes']").text
+print("------- "+ title + " ------")
 print(driver.find_element(By.XPATH,"//input[1]").is_displayed())
 print(driver.find_element(By.XPATH,"//input[1]").is_enabled())
 
